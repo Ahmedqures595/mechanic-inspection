@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #f2f2f2;
+  background: linear-gradient(rgba(46, 24, 64, 0.82), rgba(46, 24, 64, 0.82)), url("images/anime-car-city.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.header {
+  padding: 20px;
+  text-align: center;
+  background: rgba(30, 18, 48, 0.9);
+  animation: fadeDown 1s ease forwards;
+}
+@keyframes fadeDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.logo {
+  font-size: 28px;
+  color: #d6c8ff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 1 4px rgba(214, 200, 255, 0.3);
+}
+.form-container {
+  padding: 32px;
+  max-width: 820px;
+  margin: 40px auto;
+  background: rgba(35, 22, 58, 0.88);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  animation: fadeIn 1.5s ease forwards;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+h1, h2 {
+  color: #e6ddff;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-shadow: none;
+}
+.form-group {
+  opacity: 0;
+  animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(20px); }
+}
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+input[type='text'],
+input[type='number'],
+input[type='date'] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+
+  background: #1e1633;
+  border: 1px solid #3a2a5e;
+  color: #ffffff;
+}
+
+input:focus {
+  border-color: #b9a9ff;
+  box-shadow: 0 0 0 2px rgba(185, 169, 255, 0.25);
+}
+input[type='text']:focus,
+input[type='number']:focus,
+input[type='date']:focus {
+  border-color: #0ef;
+  box-shadow: 0 0 10px #0ef;
+}
+input[type='checkbox'] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+.inspection-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.inspection-checklist label {
+  background: rgba(0, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #0ef;
+}
+canvas {
+  border: 2px solid #0ef;
+  background: white;
+  cursor: crosshair;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
+.btn-submit {
+  padding: 12px 26px;
+  background: #b9a9ff;
+  color: #1e1633;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  box-shadow: 0 6px 16px rgba(185, 169, 255, 0.35);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(185, 169, 255, 0.45);
+}
+
+.btn-clear {
+  background: #d46a6a;
+  color: white;
+  box-shadow: 0 6px 16px rgba(212, 106, 106, 0.4);
+}
+
+.btn-clear:hover {
+  box-shadow: 0 0 20px #e74c3c;
+}
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .header,
+  .btn-submit,
+  .btn-clear {
+    display: none !important;
+  }
+
+  .form-container {
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+}
+
+.pdf-mode *,
+.pdf-mode .form-group {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+#pdf-content.pdf-export {
+  background: #23163A !important;
+  backdrop-filter: none !important;
+}
+
+#pdf-content.pdf-export,
+#pdf-content.pdf-export * {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+
+#pdf-content.pdf-export .inspection-checklist label {
+  background: #1e1633 !important;
+  border: 1px solid #0ef !important;
+}
+
+#pdf-content input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #0ef;
+  border-radius: 4px;
+  background: #ffffff;
+  display: inline-grid;
+  place-content: center;
+  margin-right: 10px;
+  vertical-align: middle;
+  transform: none;
+}
+
+
+#pdf-content input[type="checkbox"]::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  transform: scale(0);
+
+
+  background: #0ef;      
+  border: 2px solid #0ef;
+
+  clip-path: polygon(
+    10% 45%,
+    0 65%,
+    48% 100%,
+    100% 18%,
+    82% 0,
+    42% 66%
+  );
+
+  box-shadow: 0 0 6px #23163A; 
+}
+
+#pdf-content input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+#pdf-content.pdf-export input[type="checkbox"] {
+  border-color: #0ef !important;
+  background: #ffffff !important;
+}
+
